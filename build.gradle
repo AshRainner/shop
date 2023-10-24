@@ -33,6 +33,8 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	//spring boot starter security
 	implementation 'org.springframework.boot:spring-boot-starter-security:3.1.3'
+	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-validation
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	runtimeOnly 'com.mysql:mysql-connector-j'
@@ -44,13 +46,15 @@ dependencies {
 	// querydsl 추가 2
 	implementation "com.querydsl:querydsl-jpa:${queryDslVersion}:jakarta"
 
-	// https://mvnrepository.com/artifact/nz.net.ultraq.thymeleaf/thymeleaf-layout-dialect
-	implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect:3.3.0'
-
 	annotationProcessor(
 			"jakarta.persistence:jakarta.persistence-api",
 			"jakarta.annotation:jakarta.annotation-api",
 			"com.querydsl:querydsl-apt:${queryDslVersion}:jakarta")
+
+	// https://mvnrepository.com/artifact/nz.net.ultraq.thymeleaf/thymeleaf-layout-dialect
+	implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect:3.3.0'
+
+
 }
 
 tasks.named('test') {

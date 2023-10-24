@@ -15,7 +15,24 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
-        http.formLogin(Customizer.withDefaults()).logout(Customizer.withDefaults());
+        //http.formLogin(Customizer.withDefaults()).logout(Customizer.withDefaults());
+
+        http.formLogin(form->form
+                .loginPage("/member/login")
+                .defaultSuccessUrl("/")
+                .failureUrl("/member/login/error")
+                .usernameParameter("email")
+                .passwordParameter("password")
+                .permitAll());
+
+        http.logout(Customizer.withDefaults());
+
+        http.authorizeHttpRequests(request->request
+                .requestMatchers("/css/**").permitAll()
+                .requestMatchers("/", "/member/**", "/item/**", "/images/**").permitAll()
+                .requestMatchers("/admin/**").hasRole("ADMIN")
+                .anyRequest().authenticated());
+
         return http.build();
     }
 
