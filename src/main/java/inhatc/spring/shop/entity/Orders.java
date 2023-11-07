@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "Orders")
@@ -29,4 +31,8 @@ public class Orders {
 
     @Enumerated(EnumType.STRING)
     private OrderStatus status;
+
+    @Builder.Default
+    @OneToMany(mappedBy = "order",fetch = FetchType.LAZY, cascade = CascadeType.ALL,orphanRemoval = true)
+    private List<OrderItem> orderItems = new ArrayList<>();
 }
