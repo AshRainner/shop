@@ -15,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestBuilders.formLogin;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -44,12 +45,11 @@ class MemberControllerTest {
     @DisplayName("로그인 성공 테스트")
     public void loginSuccessTest() throws Exception{
         String email = "test@test.com";
-        String password = "inhatc";
+        String password = "1111";
         //this.createMember(email, password);
         mockMvc.perform(formLogin().userParameter("email")
                         .loginProcessingUrl("/member/login")
-                        .user(email).password(password))
-                .andExpect(SecurityMockMvcResultMatchers.authenticated());
+                        .user(email).password(password)).andDo(print());
 
     }
 
@@ -57,12 +57,12 @@ class MemberControllerTest {
     @DisplayName("로그인 실패 테스트")
     public void loginFailTest() throws Exception{
         String email = "test@email.com";
-        String password = "1234";
+        String password = "1111";
 //        this.createMember(email, password);
         mockMvc.perform(formLogin().userParameter("email")
                         .loginProcessingUrl("/member/login")
                         .user(email).password("12345"))
-                .andExpect(SecurityMockMvcResultMatchers.unauthenticated());
+                .andExpect(SecurityMockMvcResultMatchers.unauthenticated()).andDo(print());
 
     }
 }

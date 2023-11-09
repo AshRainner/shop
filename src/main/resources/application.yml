@@ -5,10 +5,6 @@ server:
   port: 80                    # 포트 설정
 
 spring:
-  redis:
-    host: localhost
-    port: 6379
-
   application:
     name: geon-shop     # 프로젝트명 설정
 
