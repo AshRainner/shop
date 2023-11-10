@@ -33,6 +33,8 @@ public class Orders {
     private OrderStatus status;
 
     @Builder.Default
-    @OneToMany(mappedBy = "order",fetch = FetchType.LAZY, cascade = CascadeType.ALL,orphanRemoval = true)
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<OrderItem> orderItems = new ArrayList<>();
+
+    private OrderStatus orderStatus;
 }
