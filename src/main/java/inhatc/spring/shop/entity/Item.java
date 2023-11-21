@@ -1,6 +1,7 @@
 package inhatc.spring.shop.entity;
 
 
+import inhatc.spring.shop.common.entity.BaseEntity;
 import inhatc.spring.shop.constant.ItemSellStatus;
 import jakarta.persistence.*;
 import lombok.*;
@@ -16,7 +17,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Item {
+public class Item extends BaseEntity {
     @Id
     @Column(name = "item_id")
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
@@ -38,9 +39,4 @@ public class Item {
     @Enumerated(EnumType.STRING)
     private ItemSellStatus itemSellStatus;
 
-    //@CreatedDate
-    private LocalDateTime regTime;
-
-    //@LastModifiedDate
-    private LocalDateTime upDateTime;
 }

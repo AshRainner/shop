@@ -50,3 +50,17 @@ spring:
         name: test@test.com
         password: 1111
 
+
+    ####################################
+    # File Setting 세팅
+    ####################################
+    servlet:
+      multipart:
+        max-file-size: 20MB
+        max-request-size: 100MB
+####################################
+# 파일 업로드 설정
+####################################
+itemImgLocation: C:/shop/item/
+uploadPath: file:///C:/shop/
+
