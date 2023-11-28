@@ -3,6 +3,7 @@ package inhatc.spring.shop.entity;
 
 import inhatc.spring.shop.common.entity.BaseEntity;
 import inhatc.spring.shop.constant.ItemSellStatus;
+import inhatc.spring.shop.dto.ItemFormDto;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
@@ -39,4 +40,11 @@ public class Item extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private ItemSellStatus itemSellStatus;
 
+    public void updateItem(ItemFormDto itemFormDto) {
+        this.itemNm = itemFormDto.getItemNm();
+        this.price = itemFormDto.getPrice();
+        this.stockNumber = itemFormDto.getStockNumber();
+        this.itemDetail = itemFormDto.getItemDetail();
+        this.itemSellStatus = itemFormDto.getItemSellStatus();
+    }
 }
